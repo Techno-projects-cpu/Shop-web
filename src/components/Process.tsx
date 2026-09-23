@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { PROCESS } from "@/data/content";
 import { Icon } from "./icons";
 import { Reveal } from "./Reveal";
@@ -43,9 +46,13 @@ export function Process() {
         </div>
 
         <ol className="relative space-y-6">
-          <div
+          <motion.div
             aria-hidden="true"
-            className="absolute top-8 bottom-8 left-[27px] hidden w-px border-l-2 border-dashed border-pine-900/15 sm:block"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: "-15% 0px" }}
+            transition={{ duration: 1.6, ease: [0.2, 0.6, 0.2, 1] }}
+            className="absolute top-8 bottom-8 left-[27px] hidden w-px origin-top border-l-2 border-dashed border-pine-900/15 sm:block"
           />
           {PROCESS.map((step, i) => (
             <Reveal as="li" key={step.title} delay={i * 110} className="relative">

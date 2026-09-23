@@ -101,28 +101,28 @@ export function Calculator() {
             <div className="grid grid-cols-2 gap-px bg-paper-100/10">
               <div className="bg-pine-900 p-7 sm:p-9">
                 <p className="text-xs font-medium tracking-wide text-paper-400 uppercase">Flood water / season</p>
-                <p className="font-display mt-2 text-3xl font-semibold text-paper-300 sm:text-4xl">
+                <p className="font-display mt-2 text-[1.55rem] leading-tight font-semibold text-paper-300 sm:text-4xl">
                   {Math.round(r.flood).toLocaleString("en-IN")}
                   <span className="ml-1 text-sm font-normal text-paper-400">m³</span>
                 </p>
               </div>
               <div className="bg-pine-900 p-7 sm:p-9">
                 <p className="text-xs font-medium tracking-wide text-paper-400 uppercase">With drip / season</p>
-                <p className="font-display mt-2 text-3xl font-semibold text-water-300 sm:text-4xl">
+                <p className="font-display mt-2 text-[1.55rem] leading-tight font-semibold text-water-300 sm:text-4xl">
                   {Math.round(r.drip).toLocaleString("en-IN")}
                   <span className="ml-1 text-sm font-normal text-paper-400">m³</span>
                 </p>
               </div>
               <div className="bg-pine-900 p-7 sm:p-9">
                 <p className="text-xs font-medium tracking-wide text-paper-400 uppercase">Water saved</p>
-                <p className="font-display mt-2 text-3xl font-semibold text-leaf-300 sm:text-4xl">
+                <p className="font-display mt-2 text-[1.55rem] leading-tight font-semibold text-leaf-300 sm:text-4xl">
                   {Math.round(r.saved).toLocaleString("en-IN")}
                   <span className="ml-1 text-sm font-normal text-paper-400">m³ · {r.savedPct}%</span>
                 </p>
               </div>
               <div className="bg-pine-900 p-7 sm:p-9">
                 <p className="text-xs font-medium tracking-wide text-paper-400 uppercase">Pumping savings</p>
-                <p className="font-display mt-2 text-3xl font-semibold text-sun-300 sm:text-4xl">
+                <p className="font-display mt-2 text-[1.55rem] leading-tight font-semibold text-sun-300 sm:text-4xl">
                   {inr(r.money)}
                   <span className="ml-1 text-sm font-normal text-paper-400">/ season</span>
                 </p>

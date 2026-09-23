@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, SITE } from "@/data/content";
 import { Icon } from "./icons";
 
@@ -53,7 +54,12 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
-        <a href="#top" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+        <motion.a
+          whileTap={{ scale: 0.96 }}
+          href="#top"
+          className="flex items-center gap-3"
+          onClick={() => setOpen(false)}
+        >
           <LogoMark />
           <span className="leading-tight">
             <span className="font-display block text-[15px] font-semibold tracking-tight text-paper-50 sm:text-base">
@@ -63,7 +69,7 @@ export function Header() {
               Micro Irrigation
             </span>
           </span>
-        </a>
+        </motion.a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((l) => (
@@ -78,73 +84,78 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
+          <motion.a
+            whileTap={{ scale: 0.96 }}
             href={SITE.phoneHref}
             className="group hidden items-center gap-2 rounded-full bg-leaf-500 px-4 py-2.5 text-sm font-semibold text-pine-950 shadow-card transition hover:bg-leaf-400 sm:inline-flex"
           >
             <Icon name="phone" className="h-4 w-4" strokeWidth={2.2} />
             {SITE.phoneDisplay}
-          </a>
-          <button
+          </motion.a>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-paper-100/15 text-paper-100 transition hover:bg-paper-100/10 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-paper-100/15 text-paper-100 transition hover:bg-paper-100/10 lg:hidden"
           >
             <Icon name={open ? "close" : "menu"} className="h-5 w-5" strokeWidth={2} />
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={`lg:hidden ${
-          open ? "pointer-events-auto" : "pointer-events-none"
-        } fixed inset-x-0 top-16 bottom-0 z-40 transition`}
-      >
-        <div
-          className={`absolute inset-0 bg-pine-950/95 backdrop-blur-xl transition-opacity duration-300 ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setOpen(false)}
-        />
-        <nav
-          aria-label="Mobile"
-          className={`relative flex h-full flex-col gap-1 overflow-y-auto px-6 pt-6 pb-10 transition-all duration-300 ${
-            open ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
-          }`}
-        >
-          {NAV_LINKS.map((l, i) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="font-display border-b border-paper-100/8 py-4 text-2xl font-medium text-paper-100 transition hover:text-leaf-300"
-              style={{ transitionDelay: `${i * 40}ms` }}
-            >
-              {l.label}
-            </a>
-          ))}
-          <div className="mt-6 flex flex-col gap-3">
-            <a
-              href={SITE.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-leaf-500 px-5 py-3.5 text-base font-semibold text-pine-950"
-            >
-              <Icon name="phone" className="h-4 w-4" strokeWidth={2.2} />
-              Call {SITE.phoneDisplay}
-            </a>
-            <a
-              href={SITE.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-paper-100/15 px-5 py-3.5 text-base font-semibold text-paper-100"
-            >
-              WhatsApp us
-            </a>
-          </div>
-        </nav>
-      </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-x-0 top-16 bottom-0 z-40 bg-pine-950/95 backdrop-blur-xl lg:hidden"
+          >
+            <nav aria-label="Mobile" className="flex h-full flex-col gap-1 overflow-y-auto px-6 pt-4 pb-10">
+              {NAV_LINKS.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: -28 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.06 + i * 0.06, duration: 0.4, ease: [0.2, 0.6, 0.2, 1] }}
+                  className="font-display border-b border-paper-100/8 py-4 text-2xl font-medium text-paper-100 transition hover:text-leaf-300"
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+                className="mt-6 flex flex-col gap-3"
+              >
+                <a
+                  href={SITE.phoneHref}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-leaf-500 px-5 py-3.5 text-base font-semibold text-pine-950"
+                >
+                  <Icon name="phone" className="h-4 w-4" strokeWidth={2.2} />
+                  Call {SITE.phoneDisplay}
+                </a>
+                <a
+                  href={SITE.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-paper-100/15 px-5 py-3.5 text-base font-semibold text-paper-100"
+                >
+                  WhatsApp us
+                </a>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

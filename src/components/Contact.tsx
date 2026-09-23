@@ -105,7 +105,7 @@ export function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Ravi Kumar"
-                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3 text-sm text-paper-50 placeholder:text-paper-400/60 focus:border-leaf-400 focus:outline-none"
+                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3.5 text-base text-paper-50 placeholder:text-paper-400/60 focus:border-leaf-400 focus:outline-none"
                 />
               </label>
               <label className="block sm:col-span-1">
@@ -115,7 +115,7 @@ export function Contact() {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="10-digit number"
                   inputMode="tel"
-                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3 text-sm text-paper-50 placeholder:text-paper-400/60 focus:border-leaf-400 focus:outline-none"
+                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3.5 text-base text-paper-50 placeholder:text-paper-400/60 focus:border-leaf-400 focus:outline-none"
                 />
               </label>
               <label className="block sm:col-span-2">
@@ -123,7 +123,7 @@ export function Contact() {
                 <select
                   value={need}
                   onChange={(e) => setNeed(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3 text-sm text-paper-50 focus:border-leaf-400 focus:outline-none"
+                  className="mt-2 w-full rounded-xl border border-paper-100/15 bg-pine-950/60 px-4 py-3.5 text-base text-paper-50 focus:border-leaf-400 focus:outline-none"
                 >
                   {[
                     "Drip system for my field",

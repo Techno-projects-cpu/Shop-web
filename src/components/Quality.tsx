@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { QUALITY } from "@/data/content";
 import { Icon } from "./icons";
 import { Reveal } from "./Reveal";
@@ -64,9 +67,13 @@ export function Quality() {
                         <span className="font-mono text-paper-400">{b.width}</span>
                       </div>
                       <div className="h-2.5 overflow-hidden rounded-full bg-pine-800">
-                        <div
-                          className={`bar-fill h-full rounded-full ${b.tone}`}
-                          style={{ width: b.width, transitionDelay: `${200 + i * 180}ms` }}
+                        <motion.div
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true, margin: "-10% 0px" }}
+                          transition={{ duration: 1.1, delay: 0.2 + i * 0.18, ease: [0.2, 0.7, 0.2, 1] }}
+                          className={`h-full origin-left rounded-full ${b.tone}`}
+                          style={{ width: b.width }}
                         />
                       </div>
                     </div>
