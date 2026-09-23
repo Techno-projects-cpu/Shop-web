@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SITE } from "@/data/content";
 import { Icon } from "./icons";
+import { Magnetic, ScrambleText } from "./effects";
 
 const EASE = [0.2, 0.6, 0.2, 1] as const;
 
@@ -46,7 +47,7 @@ export function Hero() {
             alt="Lush green field in the Godavari delta watered by neat rows of drip irrigation at sunset"
             fill
             priority
-            className="object-cover"
+            className="animate-kenburns object-cover"
             sizes="100vw"
           />
         </motion.div>
@@ -66,7 +67,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-leaf-400" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-leaf-400" />
             </span>
-            Trusted since {SITE.since} · Godavari region
+            <ScrambleText text={`Trusted since ${SITE.since} · Godavari region`} startDelay={300} />
           </motion.p>
 
           <h1
@@ -105,22 +106,26 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.8, ease: EASE }}
             className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
           >
-            <motion.a
-              whileTap={{ scale: 0.97 }}
-              href="#products"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-leaf-500 px-7 py-3.5 text-base font-semibold text-pine-950 shadow-lift transition hover:bg-leaf-400"
-            >
-              Explore products
-              <Icon name="arrow-right" className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={2.4} />
-            </motion.a>
-            <motion.a
-              whileTap={{ scale: 0.97 }}
-              href="#design"
-              className="inline-flex items-center justify-center gap-2.5 rounded-full border border-paper-100/25 bg-pine-950/30 px-7 py-3.5 text-base font-semibold text-paper-100 backdrop-blur-sm transition hover:border-paper-100/50 hover:bg-pine-950/50"
-            >
-              <Icon name="pencil" className="h-4 w-4 text-water-300" />
-              Free farm design
-            </motion.a>
+            <Magnetic className="block sm:inline-block">
+              <motion.a
+                whileTap={{ scale: 0.97 }}
+                href="#products"
+                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-leaf-500 px-7 py-3.5 text-base font-semibold text-pine-950 shadow-lift transition hover:bg-leaf-400 sm:w-auto"
+              >
+                Explore products
+                <Icon name="arrow-right" className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={2.4} />
+              </motion.a>
+            </Magnetic>
+            <Magnetic className="block sm:inline-block">
+              <motion.a
+                whileTap={{ scale: 0.97 }}
+                href="#design"
+                className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-paper-100/25 bg-pine-950/30 px-7 py-3.5 text-base font-semibold text-paper-100 backdrop-blur-sm transition hover:border-paper-100/50 hover:bg-pine-950/50 sm:w-auto"
+              >
+                <Icon name="pencil" className="h-4 w-4 text-water-300" />
+                Free farm design
+              </motion.a>
+            </Magnetic>
           </motion.div>
 
           {/* Mobile stat chips */}

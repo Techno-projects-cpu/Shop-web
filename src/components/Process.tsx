@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { PROCESS } from "@/data/content";
+import { Wipe } from "./effects";
 import { Icon } from "./icons";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -26,13 +27,13 @@ export function Process() {
             }
           />
           <Reveal delay={150} className="mt-10">
-            <div className="relative overflow-hidden rounded-3xl shadow-lift">
+            <Wipe className="relative shadow-lift">
               <Image
                 src="/images/design-desk.jpg"
                 alt="Hands drawing a farm irrigation layout on a field map beside a calculator and compass"
                 width={1100}
                 height={800}
-                className="aspect-[4/3] w-full object-cover"
+                className="animate-kenburns aspect-[4/3] w-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 44vw"
               />
               <div className="absolute right-4 bottom-4 rounded-2xl border border-paper-50/15 bg-pine-950/70 px-5 py-3.5 backdrop-blur-md">
@@ -41,7 +42,7 @@ export function Process() {
                 </p>
                 <p className="text-xs text-paper-300">trusted by thousands of farms</p>
               </div>
-            </div>
+            </Wipe>
           </Reveal>
         </div>
 

@@ -9,6 +9,14 @@ A single-page, long-scroll marketing site built with **Next.js 15 (App Router) +
 TypeScript + Tailwind CSS v4**, with all fonts self-hosted (Fontsource) and all
 imagery stored locally in `public/images/` so it deploys anywhere (Vercel-ready).
 
+**Motion** (all free / MIT, from GitHub): framer-motion (spring reveals, layout
+animations, parallax, carousels), Lenis (smooth scroll + anchor easing),
+vanilla-tilt (3D card tilt on hover devices) — plus built-from-scratch effects:
+scramble-decode kicker, clip-path wipe image reveals, Ken Burns breathing,
+magnetic CTAs, animated nav underlines. Everything honours
+`prefers-reduced-motion`. Mobile-first: sticky Call/WhatsApp/Directions bar,
+snap-scroll carousels with edge fades, 16px inputs, fluid clamp() type.
+
 Sections:
 
 - **Hero** — full-bleed field photography, live status chip, quick-contact bar

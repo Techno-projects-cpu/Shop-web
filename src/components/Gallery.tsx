@@ -12,6 +12,9 @@ export function Gallery() {
             Swipe through the fields
           </p>
         </Reveal>
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 -left-4 z-10 w-8 bg-gradient-to-r from-pine-950 to-transparent md:hidden" />
+          <div className="pointer-events-none absolute inset-y-0 -right-4 z-10 w-8 bg-gradient-to-l from-pine-950 to-transparent md:hidden" />
         <div className="no-scrollbar -mx-4 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-2 pb-6 md:mx-0 md:mt-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
           <Reveal className="w-[82%] shrink-0 snap-center sm:w-[55%] md:w-auto md:shrink">
             <figure className="group relative overflow-hidden rounded-3xl border border-paper-100/10">
@@ -74,6 +77,7 @@ export function Gallery() {
               </a>
             </div>
           </Reveal>
+        </div>
         </div>
       </div>
     </section>

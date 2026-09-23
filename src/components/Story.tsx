@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SITE, STATS } from "@/data/content";
 import { CountUp } from "./CountUp";
+import { Wipe } from "./effects";
 import { Icon } from "./icons";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -54,13 +55,13 @@ export function Story() {
         </div>
 
         <Reveal delay={150} className="relative">
-          <div className="relative overflow-hidden rounded-3xl shadow-lift">
+          <Wipe className="relative shadow-lift">
             <Image
               src="/images/field-aerial.jpg"
               alt="Aerial view of patchwork farmland and water channels in the Godavari delta"
               width={1200}
               height={1500}
-              className="aspect-[4/5] w-full object-cover"
+              className="animate-kenburns aspect-[4/5] w-full object-cover"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-pine-950/60 via-transparent to-transparent" />
@@ -72,7 +73,7 @@ export function Story() {
                 Fields we have watered since {SITE.since}
               </p>
             </div>
-          </div>
+          </Wipe>
           <div className="absolute -top-6 -right-4 hidden rotate-3 rounded-2xl bg-leaf-500 px-5 py-4 shadow-lift sm:block">
             <p className="font-display text-3xl font-semibold text-pine-950">20+</p>
             <p className="text-xs font-semibold text-pine-900/80">years of service</p>

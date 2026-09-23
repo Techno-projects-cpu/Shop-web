@@ -52,6 +52,16 @@
   --animate-float: float 9s ease-in-out infinite;
   --animate-drip: drip 2.4s cubic-bezier(0.45, 0, 0.8, 0.6) infinite;
   --animate-pulse-ring: pulse-ring 2.6s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  --animate-kenburns: kenburns 16s ease-in-out infinite alternate;
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1) translateY(0);
+    }
+    to {
+      transform: scale(1.08) translateY(-1.5%);
+    }
+  }
 
   @keyframes marquee {
     to {
@@ -96,6 +106,21 @@
   html,
   body {
     overflow-x: clip;
+  }
+  /* Smooth native fallback (Lenis intercepts when active) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  /* Anchored sections clear the fixed header */
+  [id] {
+    scroll-margin-top: 4.75rem;
+  }
+  @media (min-width: 640px) {
+    [id] {
+      scroll-margin-top: 5.5rem;
+    }
   }
   body {
     @apply bg-pine-950 font-sans text-paper-100 antialiased;
@@ -163,7 +188,30 @@ html.lenis body {
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track,
-  .marquee-track-reverse {
+  .marquee-track-reverse,
+  .animate-kenburns {
     animation: none;
   }
+}
+
+/* Animated underline for desktop nav links */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-leaf-400), var(--color-water-400));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.nav-underline:hover::after,
+.nav-underline:focus-visible::after {
+  transform: scaleX(1);
 }

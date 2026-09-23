@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AUTOMOBILE_POINTS, SITE } from "@/data/content";
+import { Wipe } from "./effects";
 import { Icon } from "./icons";
 import { Reveal } from "./Reveal";
 
@@ -10,12 +11,12 @@ export function Automobile() {
         <Reveal>
           <div className="overflow-hidden rounded-[2rem] border border-sun-500/20 bg-gradient-to-br from-pine-900 via-pine-900 to-[#1d1608] shadow-lift">
             <div className="grid lg:grid-cols-[1fr_1fr]">
-              <div className="relative min-h-[320px]">
+              <Wipe radius="rounded-none" className="relative min-h-[320px]">
                 <Image
                   src="/images/automobile.jpg"
                   alt="Motorbike spare parts shop with shelves of chains, sprockets and boxed components"
                   fill
-                  className="object-cover"
+                  className="animate-kenburns object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-pine-950/70 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-pine-900" />
@@ -23,7 +24,7 @@ export function Automobile() {
                   <Icon name="bike" className="h-4 w-4" strokeWidth={2.2} />
                   New venture
                 </span>
-              </div>
+              </Wipe>
 
               <div className="p-8 sm:p-12">
                 <p className="font-mono text-[11px] tracking-[0.28em] text-sun-300 uppercase">
